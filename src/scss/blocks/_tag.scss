@@ -1,0 +1,8 @@
+.tag {
+  @include apply-utility("weight", "regular");
+  @include apply-utility("text", "300");
+
+  text-transform: uppercase;
+  color: var(--color-tag);
+  letter-spacing: 0.32em;
+}

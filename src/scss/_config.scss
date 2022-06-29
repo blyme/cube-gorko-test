@@ -1,0 +1,248 @@
+@use "sass:math";
+$images-path: "../../images";
+
+/// BASE SIZE
+/// All calculations are based on this. It’s recommended that
+/// you keep it at 1rem because that is the root font size. You
+/// can set it to whatever you like and whatever unit you like.
+///
+$gorko-base-size: 1rem;
+
+/// SIZE SCALE
+/// This is a Major Third scale that powers all the utilities that
+/// it is relevant for (font-size, margin, padding). All items are
+/// calcuated off the base size, so change that and cascade across
+/// your whole project.
+///
+$gorko-size-scale: (
+  "0": 0,
+  "300": $gorko-base-size * 0.8,
+  "400": $gorko-base-size,
+  "500": $gorko-base-size * 1.25,
+  "600": $gorko-base-size * 1.6,
+  "700": $gorko-base-size * 2,
+  "900": $gorko-base-size * 3,
+);
+
+/// COLORS
+/// Colors are shared between backgrounds and text by default.
+/// You can also use them to power borders, fills or shadows, for example.
+///
+$gorko-colors: (
+  "green": hsl(158deg 36% 37%),
+  "cream": hsl(30deg 38% 92%),
+  "dark": hsl(212deg 21% 14%),
+  "grey": hsl(228deg 12% 48%),
+  "white": hsl(0deg 0% 100%),
+);
+
+$light-colors: (
+  "text": map-get($gorko-colors, "dark"),
+  "bg": map-get($gorko-colors, "cream"),
+  "tag": map-get($gorko-colors, "grey"),
+  "green": map-get($gorko-colors, "green"),
+  "white": map-get($gorko-colors, "white"),
+);
+
+// TODO
+// $dark-colors: (
+//   "text": map-get($gorko-colors, "dark"),
+//   "bg": map-get($gorko-colors, "cream"),
+// );
+
+/// CORE CONFIG
+/// This powers everything from utility class generation to breakpoints
+/// to enabling/disabling pre-built components/utilities.
+///
+$gorko-config: (
+  "css-vars": (
+    "themes": (
+      "default": (
+        "tokens": (
+          "color": $light-colors,
+        ),
+      ),
+      // TODO: Dark mode
+      // "dark": (
+      //   "prefers-color-scheme": "dark",
+      //   "tokens": (
+      //     "color": $dark-colors,
+      //   ),
+      // ),
+      // "dark-toggle":
+      //   (
+      //     "prefix": '[data-theme="dark"]',
+      //     "tokens": (
+      //       "color": $dark-colors,
+      //     ),
+      //   ),,,,,
+    ),
+  ),
+  "bg": (
+    "items": $gorko-colors,
+    "output": "standard",
+    "property": "background",
+  ),
+  "color": (
+    "items": $gorko-colors,
+    "output": "standard",
+    "property": "color",
+  ),
+  "box": (
+    "items": (
+      "block": "block",
+      "flex": "flex",
+      "hide": "none",
+      "show": "inherit",
+    ),
+    "output": "responsive",
+    "property": "display",
+  ),
+  "border-radius": (
+    "items": $gorko-size-scale,
+    "output": "responsive",
+    "property": "border-radius",
+  ),
+  "border-top-left-radius": (
+    "items": $gorko-size-scale,
+    "output": "responsive",
+    "property": "border-top-left-radius",
+  ),
+  "border-top-right-radius": (
+    "items": $gorko-size-scale,
+    "output": "responsive",
+    "property": "border-top-right-radius",
+  ),
+  "border-bottom-left-radius": (
+    "items": $gorko-size-scale,
+    "output": "responsive",
+    "property": "border-bottom-left-radius",
+  ),
+  "border-bottom-right-radius": (
+    "items": $gorko-size-scale,
+    "output": "responsive",
+    "property": "border-bottom-right-radius",
+  ),
+  "flex-direction": (
+    "items": (
+      "row": "row",
+      "column": "column",
+    ),
+    "output": "responsive",
+    "property": "flex-direction",
+  ),
+  "font": (
+    "items": (
+      "base": "Montserrat, Inter, Helvetica, Arial, sans-serif",
+      "fancy": "Fraunces, Montserrat, Inter, Helvetica, Arial, sans-serif",
+    ),
+    "output": "standard",
+    "property": "font-family",
+  ),
+  "text-decoration": (
+    "items": (
+      "strike": "line-through",
+      "under": "underline",
+    ),
+    "output": "standard",
+    "property": "text-decoration",
+  ),
+  "text-transform": (
+    "items": (
+      "uppercase": "uppercase",
+      "capitalize": "capitalize",
+    ),
+    "output": "standard",
+    "property": "text-transform",
+  ),
+  "margin": (
+    "items": $gorko-size-scale,
+    "output": "responsive",
+    "property": "margin",
+  ),
+  "gap-top": (
+    "items": $gorko-size-scale,
+    "output": "standard",
+    "property": "margin-top",
+  ),
+  "gap-right": (
+    "items": $gorko-size-scale,
+    "output": "standard",
+    "property": "margin-right",
+  ),
+  "gap-bottom": (
+    "items": $gorko-size-scale,
+    "output": "standard",
+    "property": "margin-bottom",
+  ),
+  "gap-left": (
+    "items": $gorko-size-scale,
+    "output": "standard",
+    "property": "margin-left",
+  ),
+  "padding": (
+    "items": $gorko-size-scale,
+    "output": "responsive",
+    "property": "padding",
+  ),
+  "pad-top": (
+    "items": $gorko-size-scale,
+    "output": "responsive",
+    "property": "padding-top",
+  ),
+  "pad-right": (
+    "items": $gorko-size-scale,
+    "output": "responsive",
+    "property": "padding-right",
+  ),
+  "pad-bottom": (
+    "items": $gorko-size-scale,
+    "output": "responsive",
+    "property": "padding-bottom",
+  ),
+  "pad-left": (
+    "items": $gorko-size-scale,
+    "output": "responsive",
+    "property": "padding-left",
+  ),
+  "stack": (
+    "items": (
+      "300": 0,
+      "400": 10,
+      "500": 20,
+      "600": 30,
+      "700": 40,
+    ),
+    "output": "standard",
+    "property": "z-index",
+  ),
+  "text": (
+    "items": $gorko-size-scale,
+    "output": "responsive",
+    "property": "font-size",
+  ),
+  "weight": (
+    "items": (
+      "light": "300",
+      "regular": "400",
+      "bold": "700",
+    ),
+    "output": "standard",
+    "property": "font-weight",
+  ),
+  "width": (
+    "items": (
+      "full": "100%",
+      "half": math.div(100%, 2),
+      "quarter": math.div(100%, 4),
+      "third": math.div(100%, 3),
+    ),
+    "output": "responsive",
+    "property": "width",
+  ),
+  "breakpoints": (
+    "sm": "(min-width: 36em)",
+    "md": "(min-width: 48em)",
+    "lg": "(min-width: 62em)",
+  ),
+);

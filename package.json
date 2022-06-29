@@ -1,0 +1,19 @@
+{
+  "name": "frontendmentor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass src/scss:dist/css --watch --poll",
+    "serve": "parcel serve index.html",
+    "dev": "concurrently 'npm:serve' 'npm:sass'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@reloaddk/daft": "^1.2.2",
+    "gorko": "^0.9.1",
+    "parcel": "^2.6.2"
+  }
+}

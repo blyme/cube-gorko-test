@@ -1,0 +1,24 @@
+@import "config";
+
+@import "../../node_modules/gorko/gorko";
+
+@import "reset";
+
+/** UTILITIES **/
+@import "utilities/flow";
+@import "utilities/splitter";
+
+/** BLOCKS **/
+@import "blocks/product-card";
+@import "blocks/tag";
+@import "blocks/teaser-title";
+@import "blocks/button";
+
+body {
+  @include apply-utility("font", "base");
+
+  background: var(--color-bg);
+  color: var(--color-text);
+  display: grid;
+  place-items: center;
+}

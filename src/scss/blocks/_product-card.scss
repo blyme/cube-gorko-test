@@ -1,0 +1,24 @@
+.product-card {
+  @include apply-utility("margin", "400");
+
+  img {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &--price {
+    @include apply-utility("text", "700");
+    @include apply-utility("weight", "bold");
+
+    color: var(--color-green);
+  }
+
+  @include media-query("md") {
+    max-width: 600px;
+
+    img {
+      height: 100%;
+    }
+  }
+}

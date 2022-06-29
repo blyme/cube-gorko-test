@@ -1,0 +1,6 @@
+.teaser-title {
+  @include apply-utility("font", "fancy");
+  @include apply-utility("text", "700");
+
+  line-height: 100%;
+}

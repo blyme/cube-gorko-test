@@ -1,0 +1,29 @@
+.button {
+  outline: 0;
+  border: 0;
+  background-color: var(--color-green);
+  color: var(--color-white);
+  border-radius: 0.32em;
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  transition: background-color linear 150ms;
+
+  &:hover {
+    cursor: pointer;
+    background-color: darken(get-color("green"), 10%);
+  }
+
+  &[data-style="ghost"] {
+    background-color: transparent;
+    color: get-color("green");
+    outline: 3px solid get-color("green");
+
+    svg * {
+      fill: get-color("green");
+    }
+  }
+}
